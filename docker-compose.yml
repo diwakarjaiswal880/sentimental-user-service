@@ -7,7 +7,6 @@ networks:
 services:
   app:
     container_name: user
-    entrypoint: ["/usr/src/app/bin/release"]
     networks:
       - user
     ports:
@@ -19,7 +18,6 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
-
   postgre:
     restart: always
     container_name: postgredb
@@ -35,7 +33,7 @@ services:
     volumes:
       - type: volume
         source: postgredata
-        target: /pg_data
+        target: /var/lib/postgresql/data
 
 volumes:
   postgredata:

@@ -5,6 +5,11 @@ import simplejson as json
 bp = Blueprint("user", import_name=__name__, url_prefix="/user")
 
 
+@bp.route("/health")
+def health():
+    return json.dumps({"health": "alive"})
+
+
 @bp.route("/all", methods=["GET"])
 def show_users():
     return json.dumps({"index": "hello"})

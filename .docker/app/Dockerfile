@@ -1,13 +1,8 @@
 FROM python:3.8.2-slim
 
-LABEL maintainer="onlinejudge95"
-
 WORKDIR /usr/src/app
 
-# RUN groupadd -g 999 appuser && \
-#     useradd -r -u 999 -g appuser appuser
-
-# USER appuser
+LABEL maintainer="onlinejudge95"
 
 COPY requirements.txt .
 
