@@ -17,7 +17,8 @@ COPY . .
 
 RUN mkdir /etc/gunicorn && \
     mv configs/gunicorn.conf.py /etc/gunicorn/ && \
-    mv configs/gunicorn.log.conf /etc/gunicorn/
+    mv configs/gunicorn.log.conf /etc/gunicorn/ && \
+    rm -rf configs
 
 RUN chmod +x bin/release
 
