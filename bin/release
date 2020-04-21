@@ -1,0 +1,25 @@
+#!/bin/sh
+
+DIR="/var/log/gunicorn"
+
+echo "**************************************************************************************"
+echo "Checking if ${DIR} exists"
+
+if [ ! -d "$DIR" ]; then
+    echo "Info: ${DIR} does not exists. Creating"
+    mkdir -p ${DIR}
+else
+    echo "${DIR} exists"
+fi
+
+echo "Pre server configuration complete"
+echo "**************************************************************************************"
+
+echo "\n"
+
+echo "Starting up main gunicorn process\n"
+
+gunicorn --config /etc/gunicorn/gunicorn.conf.py manage:app
+
+echo "Exiting gunicorn"
+echo "**************************************************************************************"

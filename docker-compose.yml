@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: user
+    entrypoint: ["/usr/src/app/bin/release"]
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgre
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+
+  postgre:
+    restart: always
+    container_name: postgredb
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    build:
+      context: .docker/db
+      dockerfile: Dockerfile
+    volumes:
+      - type: volume
+        source: postgredata
+        target: /pg_data
+
+volumes:
+  postgredata:
