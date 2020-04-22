@@ -13,7 +13,7 @@ COPY . .
 RUN mkdir /etc/gunicorn && \
     mv configs/gunicorn.conf.py /etc/gunicorn/ && \
     mv configs/gunicorn.log.conf /etc/gunicorn/ && \
-    rm -rf configs
+    rm -rf configs .docker/db
 
 RUN chmod +x bin/release
 

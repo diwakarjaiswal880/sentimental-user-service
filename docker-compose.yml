@@ -18,6 +18,8 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
+      image: user
+  
   postgre:
     restart: always
     container_name: postgredb
